@@ -1,0 +1,6 @@
+---
+- name: Download installation script
+  get_url: 
+    url=http://static.rust-lang.org/rustup.sh 
+    dest=/tmp/rustup.sh 
+
