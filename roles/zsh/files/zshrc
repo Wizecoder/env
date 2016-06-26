@@ -1,11 +1,5 @@
-autoload -U compinit
-compinit -u
-
-autoload -U colors
-colors
-
-export HISTSIZE=100000
-export HISTFILE="$HOME/.history"
-export SAVEHIST=$HISTSIZE
-
-
+source $HOME/.zsh/autocomplete
+source $HOME/.zsh/prompt
+source $HOME/.zsh/history
+source $HOME/.zsh/aliases
+source $HOME/.zsh/options
