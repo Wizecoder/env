@@ -1,3 +1,28 @@
 #!/bin/bash
 
 set -e
+
+ANSIBLE_ENV_SETUP=vendor/ansible/hacking/env-setup
+VIRTUALENV_SETUP=vendor/virtualenv/virtualenv.py
+VIRTUALENV_TARGET_DIR=python
+VIRTUALENV_ACTIVATE=$VIRTUALENV_TARGET_DIR/bin/activate
+
+DEV_NULL=/dev/null
+
+if [[ ! -e $VIRTUALENV_ACTIVATE ]]; then
+	python $VIRTUALENV_SETUP $VIRTUALENV_TARGET_DIR &> $DEV_NULL
+elif [ -e $VIRTUALENV_ACTIVATE ]; then
+	echo "Skipping virtualenv install (already exists)"
+fi
+
+source $VIRTUALENV_ACTIVATE
+
+if [[ -z $(pip show paramiko PyYAML Jinja2 httplib2) ]]; then
+	pip install paramiko pycrypto PyYAML Jinja2 httplib2
+else
+	echo "Skipping pip installs"
+fi
+
+source $ANSIBLE_ENV_SETUP &> $DEV_NULL
+
+ansible-playbook --ask-become-pass -i inventory playbooks/darwin.yml
