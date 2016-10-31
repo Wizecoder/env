@@ -3,3 +3,6 @@ source $HOME/.zsh/prompt
 source $HOME/.zsh/history
 source $HOME/.zsh/aliases
 source $HOME/.zsh/options
+
+LOCAL_RC=$HOME/.zshrc.local
+test -f $LOCAL_RC && source $LOCAL_RC

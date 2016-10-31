@@ -1,0 +1,2 @@
+- name: defaults | Visualize CPU usage in Activity Monitor Dock icon
+  osx_defaults: domain=com.apple.ActivityMonitor key=IconType type=int value=5
