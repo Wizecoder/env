@@ -1,8 +1,15 @@
-source $HOME/.zsh/autocomplete
+export ZSH=$HOME/env/roles/zsh/files
+
+source $HOME/.zsh/path
 source $HOME/.zsh/prompt
 source $HOME/.zsh/history
 source $HOME/.zsh/aliases
 source $HOME/.zsh/options
+source $HOME/.zsh/autocomplete
+
+bindkey -v
+
+test -e $HOME/.zsh/common.private && source $HOME/.zsh/common.private
 
 LOCAL_RC=$HOME/.zshrc.local
 test -f $LOCAL_RC && source $LOCAL_RC
