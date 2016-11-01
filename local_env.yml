@@ -1,0 +1,12 @@
+---
+- hosts: local
+  pre_tasks:
+    - name: create backup folder if it doesn't exist
+      file: path="{{ dotfiles_backup_dir }}" state=directory
+       
+  roles:
+    - { role: zsh, tags: ['zsh'] }
+    - { role: git, tags: ['git'] }
+    - { role: tmux, tags: ['tmux'] }
+    - { role: homebrew, when: ansible_os_family == "Darwin" }
+    - { role: osx, when: ansible_os_family == "Darwin" }

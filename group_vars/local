@@ -1,0 +1,5 @@
+# vi: set ft=yaml :
+
+dotfiles_user_home: "{{ '~' | expanduser }}"
+dotfiles_home: "{{ dotfiles_user_home }}/env"
+dotfiles_backup_dir: "{{ dotfiles_user_home }}/.envbackup"
