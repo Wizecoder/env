@@ -1,3 +1,8 @@
+[ -z "$PS1" ] && return
+
+export EDITOR=vim
+export HGEDITOR=vim
+
 export ZSH=$HOME/env/roles/zsh/files
 
 source $HOME/.zsh/path
