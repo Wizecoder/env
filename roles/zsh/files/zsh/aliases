@@ -1,0 +1,6 @@
+alias hrb='hg rebase'
+alias hrbd='hg rebase -d'
+alias hcm='hg commit -m'
+alias ham='hg amend'
+alias hamr='hg amend --rebase'
+alias hadr='hg addremove'

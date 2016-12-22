@@ -1,0 +1,38 @@
+---
+# Installation
+
+
+# Configuration
+- name: zshrc | check if it exists
+  stat: path="{{ dotfiles_user_home }}/.zshrc"
+  register: zshrc_stat
+
+- name: zshrc | back up if it exists
+  command: mv {{ dotfiles_user_home }}/.zshrc {{dotfiles_backup_dir}}/.zshrc
+  args:
+    creates: "{{ dotfiles_backup_dir }}/.zshrc" 
+  when: zshrc_stat.stat.islnk is defined and zshrc_stat.stat.islnk == False
+
+- name: zsh | check if zsh folder exists
+  stat: path="{{ dotfiles_user_home }}/.zsh"
+  register: zsh_stat
+
+- name: zsh | back up if folder exists
+  command: mv {{ dotfiles_user_home }}/.zsh {{dotfiles_backup_dir}}/.zsh
+  args:
+    creates: "{{ dotfiles_backup_dir }}/.zsh" 
+  when: zsh_stat.stat.islnk is defined and zsh_stat.stat.islnk == False
+
+- name: zshrc | symlink config
+  file:
+    src: "{{ dotfiles_home }}/roles/zsh/files/zshrc"
+    dest: "{{ dotfiles_user_home }}/.zshrc"
+    state: link
+    force: yes
+
+- name: zsh | symlink folder
+  file:
+    src: "{{ dotfiles_home }}/roles/zsh/files/zsh"
+    dest: "{{ dotfiles_user_home }}/.zsh"
+    state: link
+    force: yes

@@ -1,5 +1,5 @@
 - name: Symlink .tmux.conf
   file:
-    src: "{{ dotfiles_home }}/roles/tmux/files/tmux.conf"
-    dest: "{{dotfiles_user_home}}/.tmux.conf"
+    src: "{{ ansible_env.PWD }}/roles/tmux/files/tmux.conf"
+    dest: "~/.tmux.conf"
     state: link

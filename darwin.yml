@@ -3,3 +3,4 @@
   roles:
     - { role: homebrew, tags: ['homebrew'] }
     - { role: rust, tags: ['rust'] }
+    - { role: osx, tags: ['osx'] }
