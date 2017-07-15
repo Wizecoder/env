@@ -1,0 +1,10 @@
+- name: Symlink .vim
+  file:
+    src: "{{ ansible_env.PWD }}/roles/vim/files/vim/"
+    dest: "~/.vim/"
+    state: link
+- name: Symlink .vimrc
+  file:
+    src: "{{ ansible_env.PWD }}/roles/vim/files/vimrc"
+    dest: "~/.vimrc"
+    state: link
